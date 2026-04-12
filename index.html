@@ -1,3 +1,190 @@
-File name: index.html
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, Check, ArrowRight, MessageCircle, ShieldCheck, Zap, Users, BarChart3 } from 'lucide-react';
 
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Qubix</title><style>body{margin:0;font-family:Inter,Arial;background:#05060a;color:#fff;overflow-x:hidden}a{color:inherit;text-decoration:none}section{padding:80px 10%}nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 10%;backdrop-filter:blur(12px);background:rgba(10,12,20,0.4);z-index:1000}nav h1{background:linear-gradient(90deg,#7f5af0,#2cb67d);-webkit-background-clip:text;color:transparent}button{cursor:pointer;border:none} .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:radial-gradient(circle at top,#1a1f3a,#05060a)}.hero h2{font-size:52px;max-width:800px;background:linear-gradient(90deg,#7f5af0,#3da9fc);-webkit-background-clip:text;color:transparent}.hero p{max-width:600px;opacity:0.8}.btn{padding:12px 18px;border-radius:10px;background:linear-gradient(90deg,#7f5af0,#3da9fc);color:#fff;margin-top:20px}.trusted{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.pfp{width:40px;height:40px;border-radius:50%;background:gray}.marquee{white-space:nowrap;overflow:hidden;position:relative}.marquee div{display:inline-block;padding-left:100%;animation:scroll 18s linear infinite}.marquee span{margin:0 30px;opacity:0.8}.fade{mask-image:linear-gradient(to right,transparent,black 20%,black 80%,transparent)}@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}.card{padding:20px;border-radius:16px;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.08)}.danger{color:#ff4d6d}.faq details{background:rgba(255,255,255,0.05);padding:15px;border-radius:10px;margin-bottom:10px}.pricing{display:flex;gap:20px;flex-wrap:wrap}.price{flex:1;padding:25px;border-radius:16px;background:linear-gradient(145deg,#0b0f1f,#121a33);border:1px solid rgba(255,255,255,0.08)}.price h3{color:#3da9fc}.footer{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;background:#0a0c14} .link{opacity:0.8;cursor:pointer}</style></head><body><nav><h1>QUBIX</h1><div><a href="#pricing">Pricing</a></div></nav><section class="hero"><h2>Turn Attention Into Predictable Income Using AI Systems</h2><p>Qubix helps micro creators under 100k followers build structured AI monetization systems that convert content into $0 → $5k/month income without burnout or chaos.</p><button class="btn">Get AI Leverage</button><div class="trusted"><span>Trusted by 300+ creators making $5k/m</span><div class="pfp"></div><div class="pfp"></div><div class="pfp"></div><div class="pfp"></div><div class="pfp"></div></div></section><section><h2>Trusted Ecosystem</h2><div class="marquee fade"><div><span>Whop</span><span>Acquisition.com</span><span>Ghostwriter OS</span><span>Monetize.com</span><span>Sephora</span><span>Microsoft</span><span>OpenAI</span><span>Google</span></div></div></section><section><h2>Pain Points</h2><div class="grid"><div class="card danger">Posting daily but earning $0 to $300/month</div><div class="card danger">Overwhelmed by tools and strategies</div><div class="card danger">Burnout from content with no returns</div><div class="card danger">No predictable income system</div></div></section><section><h2>Solution</h2><div class="card">Qubix replaces chaos with structured AI systems that map content to income, automate workflows, and build predictable monetization loops.</div></section><section class="faq"><h2>FAQs</h2><details><summary>Does this work for beginners</summary>Yes. Built for creators starting from zero clarity.</details><details><summary>How fast results</summary>Most users see structured clarity in days and first monetization attempts within weeks.</details><details><summary>Do I need followers</summary>No. System works under 100k followers focus.</details></section><section><h2>Reviews</h2><div class="grid"><div class="card"><div class="pfp"></div>Finally I made my first $1k using structure</div><div class="card"><div class="pfp"></div>Stopped guessing, started earning</div><div class="card"><div class="pfp"></div>Best AI system I used as a creator</div></div></section><section id="pricing"><h2>Pricing</h2><div class="pricing"><div class="price"><h3>Free Starter</h3><p>AI systems introduction</p><ul><li>Mindset reset</li><li>Content system</li><li>Basic AI prompts</li></ul></div><div class="price"><h3>AI Leverage $29</h3><p>Full monetization system</p><ul><li>Content engine</li><li>AI automation</li><li>Monetization funnels</li><li>$0 to $5k roadmap</li></ul></div></div></section><section class="footer"><div><h3>Qubix</h3><p>Systems over chaos</p></div><div><div class="link">About</div><div class="link">Contact</div><div class="link">Support</div><div class="link">Privacy</div><div class="link">Refund</div><div class="link">Affiliate 70%</div></div></section></body></html>
+// --- STYLES & GRADIENTS ---
+const theme = {
+  brandGradient: "bg-gradient-to-br from-[#00F2FE] via-[#4facfe] to-[#7000FF]", // Cyan to Deep Purple
+  glass: "bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl",
+  textGradient: "text-transparent bg-clip-text bg-gradient-to-r from-[#00F2FE] to-[#7000FF]"
+};
+
+const Navbar = () => (
+  <nav className="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-black/50 backdrop-blur-md">
+    <div className="text-2xl font-black tracking-tighter text-white">QUBIX<span className="text-[#00F2FE]">.</span></div>
+    <div className="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+      <a href="#about" className="hover:text-white transition">About</a>
+      <a href="#systems" className="hover:text-white transition">Systems</a>
+      <a href="#pricing" className="hover:text-white transition">Pricing</a>
+    </div>
+    <button className={`${theme.brandGradient} px-6 py-2 rounded-full font-bold text-white hover:scale-105 transition shadow-lg`}>
+      Get Started
+    </button>
+  </nav>
+);
+
+const Hero = () => (
+  <section className="pt-32 pb-20 px-6 flex flex-col items-center text-center">
+    <motion.h1 
+      initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+      className="text-5xl md:text-7xl font-black mb-6 max-w-4xl text-white leading-tight"
+    >
+      Turn Attention Into Predictable <span className={theme.textGradient}>$5k/Month</span> Revenue.
+    </motion.h1>
+    <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-10">
+      Qubix helps micro-creators under 100k followers use structured AI-powered leverage systems to monetize without burnout.
+    </p>
+    
+    <div className="flex flex-col md:flex-row items-center gap-4 mb-12">
+      <div className="flex -space-x-3">
+        {[1,2,3,4,5,6].map(i => (
+          <img key={i} src={`https://i.pravatar.cc/150?u=${i}`} className="w-12 h-12 rounded-full border-2 border-black" alt="creator" />
+        ))}
+      </div>
+      <p className="text-sm font-semibold text-gray-300">
+        Trusted by <span className="text-white">300+ creators</span> making $5k/m using AI Leverage
+      </p>
+    </div>
+  </section>
+);
+
+const CompanySlider = () => {
+  const companies = [
+    "whop.com", "acquisition.com", "ghostwriter os", "monetize.com", 
+    "Sephora", "Microsoft", "openAI", "Google"
+  ];
+  
+  return (
+    <div className="py-10 bg-black/20 overflow-hidden relative">
+      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10" />
+      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10" />
+      <motion.div 
+        animate={{ x: [0, -1000] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="flex whitespace-nowrap gap-16 items-center"
+      >
+        {[...companies, ...companies].map((c, i) => (
+          <span key={i} className="text-2xl font-bold text-gray-600 grayscale hover:grayscale-0 transition cursor-default">
+            {c.toUpperCase()}
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
+const PainPoints = () => {
+  const points = [
+    { t: "The Income Rollercoaster", d: "Spiking one month and disappearing the next. No predictability." },
+    { t: "The Content Burnout", d: "Posting daily for months but still earning $0-$300/month." },
+    { t: "Tool Overload", d: "Subscribing to every 'AI hack' but seeing zero ROI in your bank account." }
+  ];
+  return (
+    <section className="py-24 px-6 max-w-6xl mx-auto">
+      <h2 className="text-3xl font-bold mb-12 text-center text-white">Why Your Current Method is <span className="text-red-500 underline">Failing</span></h2>
+      <div className="grid md:grid-cols-3 gap-8">
+        {points.map((p, i) => (
+          <div key={i} className={`${theme.glass} p-8 rounded-3xl hover:border-[#00F2FE]/50 transition`}>
+            <div className="w-12 h-12 mb-4 rounded-xl bg-red-500/20 flex items-center justify-center text-red-500">
+              <Zap size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">{p.t}</h3>
+            <p className="text-gray-400">{p.d}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const FAQ = () => {
+  const [active, setActive] = useState(null);
+  const faqs = [
+    { q: "Is this for beginners?", a: "Yes. Specifically micro-creators under 100k who are stuck." },
+    { q: "Do I need technical skills?", a: "No. Our AI systems are plug-and-play frameworks." }
+  ];
+  return (
+    <section className="py-24 px-6 max-w-3xl mx-auto">
+      <h2 className="text-3xl font-bold mb-12 text-center text-white">Frequently Asked Questions</h2>
+      {faqs.map((f, i) => (
+        <div key={i} className="mb-4 border-b border-white/10">
+          <button onClick={() => setActive(active === i ? null : i)} className="w-full py-6 flex justify-between items-center text-left text-white font-bold">
+            {f.q} <ChevronDown className={active === i ? "rotate-180" : ""} />
+          </button>
+          <AnimatePresence>
+            {active === i && (
+              <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden text-gray-400 pb-6">
+                {f.a}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      ))}
+    </section>
+  );
+};
+
+const Pricing = () => (
+  <section className="py-24 px-6 bg-white/5" id="pricing">
+    <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+      <div className={`${theme.glass} p-10 rounded-[2rem]`}>
+        <h3 className="text-2xl font-bold text-white mb-2">Starter Kit</h3>
+        <div className="text-4xl font-black text-white mb-6">$0</div>
+        <ul className="space-y-4 mb-8 text-gray-300">
+          <li className="flex items-center gap-2"><Check className="text-[#00F2FE]" /> Mindset Mapping</li>
+          <li className="flex items-center gap-2"><Check className="text-[#00F2FE]" /> AI Content Skeleton</li>
+        </ul>
+        <button className="w-full py-4 rounded-xl bg-white/10 font-bold text-white hover:bg-white/20 transition">Download Free</button>
+      </div>
+      <div className={`${theme.brandGradient} p-[2px] rounded-[2rem]`}>
+        <div className="bg-black p-10 rounded-[2rem] h-full">
+          <h3 className="text-2xl font-bold text-white mb-2">AI LEVERAGE</h3>
+          <div className="text-4xl font-black text-white mb-6">$29</div>
+          <ul className="space-y-4 mb-8 text-gray-300">
+            <li className="flex items-center gap-2"><Check className="text-[#00F2FE]" /> Predictable $5k/m System</li>
+            <li className="flex items-center gap-2"><Check className="text-[#00F2FE]" /> Teamless Scaling Engine</li>
+            <li className="flex items-center gap-2"><Check className="text-[#00F2FE]" /> Revenue Multiplication Loops</li>
+          </ul>
+          <button className={`${theme.brandGradient} w-full py-4 rounded-xl font-bold text-white shadow-2xl shadow-purple-500/20`}>Get Instant Access</button>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const Footer = () => (
+  <footer className="py-20 px-6 bg-black border-t border-white/10">
+    <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-gray-400 text-sm">
+      <div className="flex flex-col gap-4">
+        <h4 className="text-white font-bold mb-2">Company</h4>
+        <a href="#" className="hover:text-[#00F2FE]">About Us</a>
+        <a href="#" className="hover:text-[#00F2FE]">Philosophy</a>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h4 className="text-white font-bold mb-2">Legal</h4>
+        <a href="#" className="hover:text-[#00F2FE]">Privacy Policy</a>
+        <a href="#" className="hover:text-[#00F2FE]">Refund Policy</a>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h4 className="text-white font-bold mb-2">Connect</h4>
+        <a href="https://instagram.com/qubix" className="hover:text-[#00F2FE]">Support (Instagram)</a>
+        <a href="#" className="hover:text-[#00F2FE]">Become an Affiliate (70%)</a>
+      </div>
+    </div>
+    <div className="text-center mt-20 text-gray-600">© 2026 QUBIX. Systems scale, effort doesn't.</div>
+  </footer>
+);
+
+export default function LandingPage() {
+  return (
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-[#00F2FE] selection:text-black">
+      <Navbar />
+      <Hero />
+      <CompanySlider />
+      <PainPoints />
+      <Pricing />
+      <FAQ />
+      <Footer />
+    </div>
+  );
+}
