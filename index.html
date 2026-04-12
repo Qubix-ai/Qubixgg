@@ -2,160 +2,329 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qubix — AI Monetization Systems</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"><style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-body{background:#0a0a0a;color:#fff;overflow-x:hidden;}
-
-/* Cursor Glow */
-.cursor{
-position:fixed;width:400px;height:400px;
-background:radial-gradient(circle,rgba(59,130,246,0.15),transparent 60%);
-pointer-events:none;transform:translate(-50%,-50%);z-index:-1;
+<title>Qubix — AI Monetization Systems</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
 }
 
-/* Navbar */
+body{
+background:#05040a;
+color:white;
+overflow-x:hidden;
+}
+
+/* =========================
+   ULTRA PREMIUM BACKGROUND
+========================= */
+
+.bg{
+position:fixed;
+inset:0;
+z-index:-3;
+background:
+radial-gradient(circle at 15% 20%, rgba(139,92,246,0.28), transparent 40%),
+radial-gradient(circle at 80% 30%, rgba(59,130,246,0.22), transparent 45%),
+radial-gradient(circle at 50% 85%, rgba(168,85,247,0.18), transparent 50%);
+filter:blur(55px);
+animation: floatBG 14s ease-in-out infinite alternate;
+}
+
+@keyframes floatBG{
+0%{transform:scale(1) translateY(0px);}
+100%{transform:scale(1.08) translateY(25px);}
+}
+
+/* =========================
+   CURSOR LIGHT
+========================= */
+
+.cursor{
+position:fixed;
+width:450px;
+height:450px;
+background:radial-gradient(circle, rgba(139,92,246,0.18), transparent 60%);
+transform:translate(-50%,-50%);
+pointer-events:none;
+z-index:-1;
+}
+
+/* =========================
+   NAV
+========================= */
+
 .nav{
-position:sticky;top:0;
-display:flex;justify-content:space-between;align-items:center;
-padding:14px 30px;
-background:rgba(10,10,10,0.6);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,0.05);
+position:sticky;
+top:0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 36px;
+background:rgba(10,10,20,0.55);
+backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(255,255,255,0.06);
 z-index:10;
 }
 
+.nav h3{
+font-weight:600;
+letter-spacing:0.6px;
+}
+
 .nav button{
-background:#3b82f6;border:none;
-padding:8px 16px;border-radius:8px;color:white;cursor:pointer;
+background:linear-gradient(135deg,#8b5cf6,#3b82f6);
+border:none;
+padding:10px 18px;
+border-radius:12px;
+color:white;
+cursor:pointer;
+transition:0.3s;
 }
 
-/* Layout */
-.container{max-width:1100px;margin:auto;padding:30px 20px;}
-.section{padding:70px 0;} /* reduced gaps */
+.nav button:hover{
+transform:scale(1.05);
+}
 
-/* Hero */
+/* =========================
+   LAYOUT
+========================= */
+
+.container{
+max-width:1120px;
+margin:auto;
+padding:42px 22px;
+}
+
+.section{
+padding:64px 0; /* tighter, premium rhythm */
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1,h2{
+letter-spacing:-0.8px;
+}
+
 .hero h1{
-font-size:clamp(34px,5vw,64px);
-line-height:1.1;
+font-size:clamp(36px,5vw,72px);
+line-height:1.05;
 }
-.highlight{color:#3b82f6;}
-.hero p{margin-top:12px;color:#aaa;max-width:550px;}
 
-.buttons{margin-top:20px;display:flex;gap:10px;}
+.highlight{
+background:linear-gradient(90deg,#8b5cf6,#3b82f6,#a855f7);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* Italic emphasis system */
+.emphasis{
+font-style:italic;
+color:#c4b5fd;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+p{
+color:#a1a1aa;
+line-height:1.6;
+margin-top:12px;
+max-width:650px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+margin-top:22px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
 .btn{
-padding:10px 20px;border-radius:10px;cursor:pointer;
-transition:0.25s;
+padding:11px 20px;
+border-radius:12px;
+cursor:pointer;
+transition:0.3s;
+font-weight:500;
 }
-.primary{background:white;color:black;}
-.secondary{border:1px solid #333;}
-.btn:hover{transform:translateY(-2px);}
 
-/* Grid */
-.grid{display:grid;gap:18px;}
-.grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+.primary{
+background:linear-gradient(135deg,#8b5cf6,#3b82f6);
+}
 
-/* Cards */
+.secondary{
+border:1px solid rgba(255,255,255,0.12);
+background:rgba(255,255,255,0.02);
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+/* =========================
+   GLASS CARDS
+========================= */
+
+.grid{
+display:grid;
+gap:18px;
+}
+
+.grid-3{
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+
 .card{
-padding:22px;border-radius:14px;
+padding:22px;
+border-radius:16px;
 background:rgba(255,255,255,0.03);
 border:1px solid rgba(255,255,255,0.08);
-transition:0.25s;
-}
-.card:hover{
-transform:translateY(-4px);
-border-color:rgba(59,130,246,0.5);
+backdrop-filter:blur(18px);
+transition:0.35s;
+position:relative;
+overflow:hidden;
 }
 
-/* Pricing */
+.card::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(120deg,transparent,rgba(139,92,246,0.08),transparent);
+transform:translateX(-100%);
+transition:0.7s;
+}
+
+.card:hover::before{
+transform:translateX(100%);
+}
+
+.card:hover{
+transform:translateY(-6px);
+border-color:rgba(139,92,246,0.5);
+}
+
+/* =========================
+   PRICING
+========================= */
+
 .pricing{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:20px;
 }
-.price-card{
-padding:26px;border-radius:16px;
-background:linear-gradient(145deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));
-border:1px solid rgba(255,255,255,0.08);
-}
-.price{font-size:34px;margin:10px 0;}
-ul{margin-top:10px;color:#aaa;}
-li{margin-bottom:6px;}
 
-/* CTA */
+.price-card{
+padding:26px;
+border-radius:18px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+transition:0.3s;
+}
+
+.price-card:hover{
+transform:translateY(-6px);
+border-color:rgba(139,92,246,0.5);
+}
+
+.price{
+font-size:36px;
+margin:10px 0;
+background:linear-gradient(90deg,#8b5cf6,#3b82f6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* =========================
+   CTA
+========================= */
+
 .cta{
 text-align:center;
 }
-.cta button{
-margin-top:15px;
-padding:14px 30px;
-background:#3b82f6;
-border:none;border-radius:12px;color:white;
-cursor:pointer;font-size:16px;
+
+.cta h2{
+font-size:42px;
 }
 
-/* Animations */
+/* =========================
+   ANIMATIONS
+========================= */
+
 .fade{
 opacity:0;
-transform:translateY(30px);
-transition:all 0.7s ease;
+transform:translateY(28px) scale(0.98);
+transition:all 0.9s cubic-bezier(0.2,0.8,0.2,1);
 }
+
 .fade.show{
 opacity:1;
-transform:translateY(0);
+transform:translateY(0) scale(1);
 }
-</style></head><body><div class="cursor" id="cursor"></div><!-- NAV --><div class="nav">
-  <h3>Qubix</h3>
-  <button>Get Started</button>
+</style></head><body><div class="bg"></div>
+<div class="cursor" id="cursor"></div><!-- NAV --><div class="nav">
+<h3>Qubix</h3>
+<button>Get Started</button>
 </div><div class="container"><!-- HERO --><section class="section hero fade">
 <h1>
-Posting daily without a system
-<span class="highlight">is financial suicide.</span>
+Posting without systems is
+<span class="highlight">financial suicide.</span>
 </h1><p>
-Turn attention into predictable $0 → $5k/month using AI-powered systems.
+Qubix helps micro-creators turn attention into <span class="emphasis">predictable income</span> using structured AI systems built for scale, clarity, and leverage.
 </p><div class="buttons">
 <div class="btn primary">Get Free System</div>
-<div class="btn secondary">View Product</div>
+<div class="btn secondary">View AI Leverage</div>
 </div>
 </section><!-- PROBLEM --><section class="section fade">
-<h2>You don’t have an audience problem.</h2>
+<h2>You don’t lack effort. You lack systems.</h2>
 <p>
-You have a system problem. Hustle doesn’t scale. Every post without a funnel is wasted effort.
+Most creators stay stuck because they operate in <span class="emphasis">chaos disguised as consistency</span>. Qubix replaces chaos with structured execution.
 </p>
 </section><!-- SYSTEM --><section class="section fade">
 <h2>The Qubix System</h2><div class="grid grid-3">
-<div class="card">Attract attention with content</div>
-<div class="card">Convert using structured funnels</div>
-<div class="card">Scale with AI automation</div>
+<div class="card">Attract attention through content</div>
+<div class="card">Convert attention into structured funnels</div>
+<div class="card">Scale output using AI leverage</div>
 </div>
 </section><!-- FEATURES --><section class="section fade">
 <h2>What You Get</h2><div class="grid grid-3">
-<div class="card">Step-by-step monetization systems</div>
-<div class="card">AI prompts & workflows</div>
-<div class="card">Content → income frameworks</div>
-<div class="card">Automation systems</div>
+<div class="card">AI monetization frameworks</div>
+<div class="card">Content → income systems</div>
+<div class="card">Automation workflows</div>
 <div class="card">Audience conversion loops</div>
-<div class="card">Scaling blueprint to $5k/month</div>
+<div class="card">Scalable creator funnels</div>
+<div class="card">$0 → $5k/month roadmap</div>
 </div>
 </section><!-- PRICING --><section class="section fade">
 <h2>Simple Pricing</h2><div class="pricing"><div class="price-card">
-<h3>Starter System</h3>
+<h3>Starter Kit</h3>
 <div class="price">Free</div>
+<p><span class="emphasis">Build clarity before you scale.</span></p>
 <ul>
-<li>AI starter workflows</li>
+<li>AI workflows</li>
+<li>Starter systems</li>
 <li>Content framework</li>
-<li>Mini funnel system</li>
 </ul>
 <div class="buttons">
-<div class="btn primary">Download</div>
+<div class="btn secondary">Download</div>
 </div>
 </div><div class="price-card">
 <h3>AI Leverage</h3>
 <div class="price">$29</div>
+<p><span class="emphasis">Turn attention into predictable income.</span></p>
 <ul>
 <li>Full monetization system</li>
-<li>AI automation workflows</li>
+<li>AI automation engine</li>
+<li>Scaling blueprint</li>
 <li>$0 → $5k roadmap</li>
-<li>Scaling frameworks</li>
 </ul>
 <div class="buttons">
 <div class="btn primary">Get Access</div>
@@ -163,26 +332,28 @@ You have a system problem. Hustle doesn’t scale. Every post without a funnel i
 </div></div>
 </section><!-- CTA --><section class="section cta fade">
 <h2>Chaos doesn’t scale.</h2>
-<p>Systems do.</p>
-<button>Build Your System</button>
+<p><span class="emphasis">Systems do.</span></p><div class="buttons" style="justify-content:center;margin-top:18px;">
+<div class="btn primary">Build Your System</div>
+</div>
 </section></div><script>
-// Cursor glow
+// Cursor
 const cursor = document.getElementById("cursor");
-document.addEventListener("mousemove", e => {
-  cursor.style.top = e.clientY + "px";
-  cursor.style.left = e.clientX + "px";
+document.addEventListener("mousemove", e=>{
+cursor.style.left = e.clientX + "px";
+cursor.style.top = e.clientY + "px";
 });
 
 // Scroll animation
 const elements = document.querySelectorAll(".fade");
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
+
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
 if(entry.isIntersecting){
 entry.target.classList.add("show");
 }
 });
-},{threshold:0.15});
+},{threshold:0.12});
 
-elements.forEach(el => observer.observe(el));
+elements.forEach(el=>observer.observe(el));
 </script></body>
 </html>
