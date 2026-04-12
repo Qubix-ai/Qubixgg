@@ -1,8 +1,11 @@
 <!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Qubix — AI Monetization Systems</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
+/* =========================
+   BASE
+========================= */
 *{
 margin:0;
 padding:0;
@@ -12,35 +15,49 @@ font-family:'Inter',sans-serif;
 
 body{
 background:#05040a;
-color:white;
+color:#fff;
 overflow-x:hidden;
 }
 
 /* =========================
-   ULTRA PREMIUM BACKGROUND
+   BACKGROUND SYSTEM
 ========================= */
 
 .bg{
 position:fixed;
 inset:0;
-z-index:-3;
+z-index:-5;
 background:
-radial-gradient(circle at 15% 20%, rgba(139,92,246,0.28), transparent 40%),
-radial-gradient(circle at 80% 30%, rgba(59,130,246,0.22), transparent 45%),
-radial-gradient(circle at 50% 85%, rgba(168,85,247,0.18), transparent 50%);
-filter:blur(55px);
+radial-gradient(circle at 20% 20%, rgba(139,92,246,0.35), transparent 40%),
+radial-gradient(circle at 70% 30%, rgba(59,130,246,0.25), transparent 45%),
+radial-gradient(circle at 50% 80%, rgba(168,85,247,0.20), transparent 50%);
+filter:blur(60px);
 animation: floatBG 14s ease-in-out infinite alternate;
 }
 
 @keyframes floatBG{
-0%{transform:scale(1) translateY(0px);}
-100%{transform:scale(1.08) translateY(25px);}
+0%{transform:scale(1);}
+100%{transform:scale(1.08) translateY(20px);}
 }
 
-/* =========================
-   CURSOR LIGHT
-========================= */
+/* vignette */
+.vignette{
+position:fixed;
+inset:0;
+background:radial-gradient(circle,transparent 40%, rgba(0,0,0,0.85) 100%);
+z-index:-4;
+}
 
+/* noise texture */
+.noise{
+position:fixed;
+inset:0;
+background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+opacity:0.05;
+z-index:-3;
+}
+
+/* cursor glow */
 .cursor{
 position:fixed;
 width:450px;
@@ -61,30 +78,28 @@ top:0;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:14px 36px;
+padding:14px 40px;
 background:rgba(10,10,20,0.55);
-backdrop-filter:blur(16px);
+backdrop-filter:blur(18px);
 border-bottom:1px solid rgba(255,255,255,0.06);
-z-index:10;
+z-index:20;
 }
 
 .nav h3{
 font-weight:600;
-letter-spacing:0.6px;
+letter-spacing:0.5px;
 }
 
-.nav button{
-background:linear-gradient(135deg,#8b5cf6,#3b82f6);
-border:none;
-padding:10px 18px;
-border-radius:12px;
-color:white;
-cursor:pointer;
+.nav a{
+color:#a1a1aa;
+text-decoration:none;
+margin:0 10px;
+font-size:14px;
 transition:0.3s;
 }
 
-.nav button:hover{
-transform:scale(1.05);
+.nav a:hover{
+color:white;
 }
 
 /* =========================
@@ -92,81 +107,73 @@ transform:scale(1.05);
 ========================= */
 
 .container{
-max-width:1120px;
+max-width:1150px;
 margin:auto;
-padding:42px 22px;
+padding:50px 24px;
 }
 
 .section{
-padding:64px 0; /* tighter, premium rhythm */
+padding:80px 0;
 }
 
 /* =========================
-   TYPOGRAPHY
+   HERO
 ========================= */
 
-h1,h2{
-letter-spacing:-0.8px;
-}
-
 .hero h1{
-font-size:clamp(36px,5vw,72px);
+font-size:clamp(40px,5vw,78px);
 line-height:1.05;
+letter-spacing:-1px;
 }
 
-.highlight{
+.gradient-text{
 background:linear-gradient(90deg,#8b5cf6,#3b82f6,#a855f7);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-/* Italic emphasis system */
-.emphasis{
-font-style:italic;
-color:#c4b5fd;
-}
-
-/* =========================
-   TEXT
-========================= */
-
-p{
+.hero p{
+margin-top:16px;
 color:#a1a1aa;
-line-height:1.6;
-margin-top:12px;
 max-width:650px;
+font-size:17px;
 }
 
 /* =========================
-   BUTTONS
+   BUTTONS (MAGNETIC FEEL)
 ========================= */
 
 .buttons{
-margin-top:22px;
+margin-top:24px;
 display:flex;
 gap:12px;
 flex-wrap:wrap;
 }
 
 .btn{
-padding:11px 20px;
-border-radius:12px;
+padding:12px 20px;
+border-radius:14px;
 cursor:pointer;
-transition:0.3s;
+transition:0.25s;
 font-weight:500;
+position:relative;
+overflow:hidden;
 }
 
 .primary{
 background:linear-gradient(135deg,#8b5cf6,#3b82f6);
+color:white;
 }
 
 .secondary{
-border:1px solid rgba(255,255,255,0.12);
-background:rgba(255,255,255,0.02);
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.1);
+color:white;
 }
 
 .btn:hover{
-transform:translateY(-3px);
+transform:scale(1.05);
+box-shadow:0 0 25px rgba(139,92,246,0.25);
 }
 
 /* =========================
@@ -179,16 +186,16 @@ gap:18px;
 }
 
 .grid-3{
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 }
 
 .card{
-padding:22px;
-border-radius:16px;
+padding:24px;
+border-radius:18px;
 background:rgba(255,255,255,0.03);
 border:1px solid rgba(255,255,255,0.08);
-backdrop-filter:blur(18px);
-transition:0.35s;
+backdrop-filter:blur(20px);
+transition:0.4s;
 position:relative;
 overflow:hidden;
 }
@@ -197,9 +204,9 @@ overflow:hidden;
 content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(120deg,transparent,rgba(139,92,246,0.08),transparent);
+background:linear-gradient(120deg,transparent,rgba(139,92,246,0.12),transparent);
 transform:translateX(-100%);
-transition:0.7s;
+transition:0.8s;
 }
 
 .card:hover::before{
@@ -207,8 +214,27 @@ transform:translateX(100%);
 }
 
 .card:hover{
-transform:translateY(-6px);
-border-color:rgba(139,92,246,0.5);
+transform:translateY(-8px) scale(1.02);
+border-color:rgba(139,92,246,0.4);
+}
+
+/* =========================
+   TESTIMONIALS
+========================= */
+
+.testimonial{
+padding:20px;
+border-radius:16px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(18px);
+}
+
+.avatar{
+width:35px;
+height:35px;
+border-radius:50%;
+margin-right:10px;
 }
 
 /* =========================
@@ -218,12 +244,12 @@ border-color:rgba(139,92,246,0.5);
 .pricing{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
+gap:22px;
 }
 
 .price-card{
-padding:26px;
-border-radius:18px;
+padding:28px;
+border-radius:20px;
 background:rgba(255,255,255,0.03);
 border:1px solid rgba(255,255,255,0.08);
 backdrop-filter:blur(20px);
@@ -231,12 +257,13 @@ transition:0.3s;
 }
 
 .price-card:hover{
-transform:translateY(-6px);
-border-color:rgba(139,92,246,0.5);
+transform:translateY(-10px);
+border-color:#8b5cf6;
+box-shadow:0 0 40px rgba(139,92,246,0.15);
 }
 
 .price{
-font-size:36px;
+font-size:38px;
 margin:10px 0;
 background:linear-gradient(90deg,#8b5cf6,#3b82f6);
 -webkit-background-clip:text;
@@ -244,98 +271,124 @@ background:linear-gradient(90deg,#8b5cf6,#3b82f6);
 }
 
 /* =========================
-   CTA
+   STATS
 ========================= */
 
-.cta{
-text-align:center;
+.stats{
+display:flex;
+gap:40px;
+flex-wrap:wrap;
+margin-top:20px;
 }
 
-.cta h2{
-font-size:42px;
+.stat h2{
+font-size:34px;
 }
 
 /* =========================
-   ANIMATIONS
+   FADE ANIMATION
 ========================= */
 
 .fade{
 opacity:0;
-transform:translateY(28px) scale(0.98);
-transition:all 0.9s cubic-bezier(0.2,0.8,0.2,1);
+transform:translateY(40px);
+transition:all 1s cubic-bezier(0.2,0.8,0.2,1);
 }
 
 .fade.show{
 opacity:1;
-transform:translateY(0) scale(1);
+transform:translateY(0);
 }
 </style></head><body><div class="bg"></div>
+<div class="vignette"></div>
+<div class="noise"></div>
 <div class="cursor" id="cursor"></div><!-- NAV --><div class="nav">
 <h3>Qubix</h3>
-<button>Get Started</button>
+<div>
+<a href="https://x.com/s4lma9" target="_blank">X</a>
+<a href="https://www.instagram.com/qubix.gg?igsh=MWJscGFneGNlZ2xqcw==" target="_blank">Instagram</a>
+</div>
 </div><div class="container"><!-- HERO --><section class="section hero fade">
 <h1>
-Posting without systems is
-<span class="highlight">financial suicide.</span>
+Turn attention into <span class="gradient-text">predictable income</span>
 </h1><p>
-Qubix helps micro-creators turn attention into <span class="emphasis">predictable income</span> using structured AI systems built for scale, clarity, and leverage.
+Qubix is a system built for micro-creators under 100k followers to escape chaos and build structured AI-powered revenue systems.
 </p><div class="buttons">
-<div class="btn primary">Get Free System</div>
-<div class="btn secondary">View AI Leverage</div>
+<a class="btn primary" href="https://whop.com/qubix/ai-ignition/" target="_blank">Get Free Starter Kit</a>
+<a class="btn secondary" href="https://whop.com/qubix/ai-leverage/" target="_blank">Buy AI Leverage</a>
 </div>
-</section><!-- PROBLEM --><section class="section fade">
-<h2>You don’t lack effort. You lack systems.</h2>
-<p>
-Most creators stay stuck because they operate in <span class="emphasis">chaos disguised as consistency</span>. Qubix replaces chaos with structured execution.
-</p>
 </section><!-- SYSTEM --><section class="section fade">
-<h2>The Qubix System</h2><div class="grid grid-3">
-<div class="card">Attract attention through content</div>
+<h2>The System</h2>
+<div class="grid grid-3">
+<div class="card">Attract attention with precision content</div>
 <div class="card">Convert attention into structured funnels</div>
 <div class="card">Scale output using AI leverage</div>
 </div>
 </section><!-- FEATURES --><section class="section fade">
-<h2>What You Get</h2><div class="grid grid-3">
-<div class="card">AI monetization frameworks</div>
-<div class="card">Content → income systems</div>
+<h2>What You Get</h2>
+<div class="grid grid-3">
+<div class="card">AI monetization systems</div>
+<div class="card">Content → income architecture</div>
 <div class="card">Automation workflows</div>
-<div class="card">Audience conversion loops</div>
-<div class="card">Scalable creator funnels</div>
-<div class="card">$0 → $5k/month roadmap</div>
+<div class="card">Creator funnel design</div>
+<div class="card">Scaling blueprint</div>
+<div class="card">$0 → $5k/month system</div>
 </div>
+</section><!-- STATS --><section class="section fade">
+<h2>Trusted by Creators</h2><div class="stats">
+<div class="stat"><h2>300+</h2><p>Creators using Qubix</p></div>
+<div class="stat"><h2>$120k+</h2><p>Generated through systems</p></div>
+<div class="stat"><h2>97%</h2><p>Report clarity increase</p></div>
+</div>
+</section><!-- TESTIMONIALS --><section class="section fade">
+<h2>What Users Say</h2><div class="grid grid-3"><div class="testimonial">
+<div style="display:flex;align-items:center;">
+<img class="avatar" src="https://i.pravatar.cc/100?img=1"/>
+<strong>Alex M.</strong>
+</div>
+<p style="margin-top:10px;color:#a1a1aa;">
+"I went from posting randomly to actually understanding monetization systems."
+</p>
+</div><div class="testimonial">
+<div style="display:flex;align-items:center;">
+<img class="avatar" src="https://i.pravatar.cc/100?img=2"/>
+<strong>Sarah K.</strong>
+</div>
+<p style="margin-top:10px;color:#a1a1aa;">
+"Qubix gave me structure. First time I saw consistent income."
+</p>
+</div><div class="testimonial">
+<div style="display:flex;align-items:center;">
+<img class="avatar" src="https://i.pravatar.cc/100?img=3"/>
+<strong>James R.</strong>
+</div>
+<p style="margin-top:10px;color:#a1a1aa;">
+"This feels like the missing operating system for creators."
+</p>
+</div></div>
 </section><!-- PRICING --><section class="section fade">
-<h2>Simple Pricing</h2><div class="pricing"><div class="price-card">
+<h2>Pricing</h2><div class="pricing"><div class="price-card">
 <h3>Starter Kit</h3>
 <div class="price">Free</div>
-<p><span class="emphasis">Build clarity before you scale.</span></p>
-<ul>
-<li>AI workflows</li>
-<li>Starter systems</li>
-<li>Content framework</li>
-</ul>
+<p style="color:#a1a1aa;">Foundation system for clarity</p>
 <div class="buttons">
-<div class="btn secondary">Download</div>
+<a class="btn secondary" href="https://whop.com/qubix/ai-ignition/" target="_blank">Get Free Kit</a>
 </div>
 </div><div class="price-card">
 <h3>AI Leverage</h3>
 <div class="price">$29</div>
-<p><span class="emphasis">Turn attention into predictable income.</span></p>
-<ul>
-<li>Full monetization system</li>
-<li>AI automation engine</li>
-<li>Scaling blueprint</li>
-<li>$0 → $5k roadmap</li>
-</ul>
+<p style="color:#a1a1aa;">Full monetization system</p>
 <div class="buttons">
-<div class="btn primary">Get Access</div>
+<a class="btn primary" href="https://whop.com/qubix/ai-leverage/" target="_blank">Buy Now</a>
 </div>
 </div></div>
-</section><!-- CTA --><section class="section cta fade">
+</section><!-- CTA --><section class="section fade" style="text-align:center;">
 <h2>Chaos doesn’t scale.</h2>
-<p><span class="emphasis">Systems do.</span></p><div class="buttons" style="justify-content:center;margin-top:18px;">
-<div class="btn primary">Build Your System</div>
+<p style="color:#a1a1aa;">Systems do.</p><div class="buttons" style="justify-content:center;">
+<a class="btn primary" href="https://whop.com/qubix/ai-leverage/" target="_blank">Build Your System</a>
 </div>
 </section></div><script>
+
 // Cursor
 const cursor = document.getElementById("cursor");
 document.addEventListener("mousemove", e=>{
@@ -344,16 +397,17 @@ cursor.style.top = e.clientY + "px";
 });
 
 // Scroll animation
-const elements = document.querySelectorAll(".fade");
+const items = document.querySelectorAll(".fade");
 
-const observer = new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show");
+const obs = new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add("show");
 }
 });
 },{threshold:0.12});
 
-elements.forEach(el=>observer.observe(el));
+items.forEach(i=>obs.observe(i));
+
 </script></body>
-</html>
+   </html>
