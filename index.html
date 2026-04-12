@@ -1,271 +1,188 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Qubix — AI Monetization Systems</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qubix — AI Monetization Systems</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#0a0a0a;color:#fff;overflow-x:hidden;}
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+/* Cursor Glow */
+.cursor{
+position:fixed;width:400px;height:400px;
+background:radial-gradient(circle,rgba(59,130,246,0.15),transparent 60%);
+pointer-events:none;transform:translate(-50%,-50%);z-index:-1;
 }
 
-body {
-  background: #0a0a0a;
-  color: white;
-  overflow-x: hidden;
+/* Navbar */
+.nav{
+position:sticky;top:0;
+display:flex;justify-content:space-between;align-items:center;
+padding:14px 30px;
+background:rgba(10,10,10,0.6);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+z-index:10;
 }
 
-/* Gradient glow background */
-.bg-glow {
-  position: fixed;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(0, 102, 255, 0.25), transparent 60%);
-  filter: blur(120px);
-  top: -200px;
-  left: -200px;
-  z-index: -1;
+.nav button{
+background:#3b82f6;border:none;
+padding:8px 16px;border-radius:8px;color:white;cursor:pointer;
 }
 
-/* Container */
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 40px 20px;
-}
+/* Layout */
+.container{max-width:1100px;margin:auto;padding:30px 20px;}
+.section{padding:70px 0;} /* reduced gaps */
 
 /* Hero */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.hero h1{
+font-size:clamp(34px,5vw,64px);
+line-height:1.1;
+}
+.highlight{color:#3b82f6;}
+.hero p{margin-top:12px;color:#aaa;max-width:550px;}
+
+.buttons{margin-top:20px;display:flex;gap:10px;}
+.btn{
+padding:10px 20px;border-radius:10px;cursor:pointer;
+transition:0.25s;
+}
+.primary{background:white;color:black;}
+.secondary{border:1px solid #333;}
+.btn:hover{transform:translateY(-2px);}
+
+/* Grid */
+.grid{display:grid;gap:18px;}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+
+/* Cards */
+.card{
+padding:22px;border-radius:14px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.08);
+transition:0.25s;
+}
+.card:hover{
+transform:translateY(-4px);
+border-color:rgba(59,130,246,0.5);
 }
 
-.hero h1 {
-  font-size: clamp(40px, 6vw, 80px);
-  line-height: 1.1;
-  font-weight: 700;
+/* Pricing */
+.pricing{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
 }
-
-.highlight {
-  color: #3b82f6;
+.price-card{
+padding:26px;border-radius:16px;
+background:linear-gradient(145deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));
+border:1px solid rgba(255,255,255,0.08);
 }
-
-.hero p {
-  margin-top: 20px;
-  color: #aaa;
-  max-width: 600px;
-  font-size: 18px;
-}
-
-/* Buttons */
-.buttons {
-  margin-top: 30px;
-  display: flex;
-  gap: 15px;
-}
-
-.btn {
-  padding: 14px 26px;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-primary {
-  background: white;
-  color: black;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  border: 1px solid #333;
-}
-
-.btn-secondary:hover {
-  background: #111;
-}
-
-/* Section */
-.section {
-  padding: 120px 0;
-}
-
-/* Glass cards */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(20px);
-  padding: 30px;
-  border-radius: 16px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(59,130,246,0.5);
-}
-
-/* Headings */
-h2 {
-  font-size: 40px;
-  margin-bottom: 20px;
-}
-
-p {
-  line-height: 1.6;
-}
+.price{font-size:34px;margin:10px 0;}
+ul{margin-top:10px;color:#aaa;}
+li{margin-bottom:6px;}
 
 /* CTA */
-.cta {
-  text-align: center;
+.cta{
+text-align:center;
+}
+.cta button{
+margin-top:15px;
+padding:14px 30px;
+background:#3b82f6;
+border:none;border-radius:12px;color:white;
+cursor:pointer;font-size:16px;
 }
 
-.cta button {
-  margin-top: 20px;
-  padding: 18px 40px;
-  font-size: 18px;
-  border-radius: 14px;
-  background: #3b82f6;
-  border: none;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+/* Animations */
+.fade{
+opacity:0;
+transform:translateY(30px);
+transition:all 0.7s ease;
 }
-
-.cta button:hover {
-  transform: scale(1.05);
+.fade.show{
+opacity:1;
+transform:translateY(0);
 }
-
-/* Fade animation */
-.fade {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease;
-}
-
-.fade.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
-</head>
-
-<body>
-
-<div class="bg-glow"></div>
-
-<div class="container">
-
-  <!-- HERO -->
-  <section class="hero fade">
-    <h1>
-      Posting daily without a system
-      <span class="highlight">is financial suicide.</span>
-    </h1>
-
-    <p>
-      Qubix helps micro-creators under 100k followers turn attention into
-      predictable $0 → $5k/month income using structured AI systems.
-    </p>
-
-    <div class="buttons">
-      <div class="btn btn-primary">Get Free System</div>
-      <div class="btn btn-secondary">View AI Leverage</div>
-    </div>
-  </section>
-
-  <!-- PROBLEM -->
-  <section class="section fade">
-    <h2>You don’t have an audience problem.</h2>
-    <p>
-      You have a system problem. Posting more won’t fix it. More tools won’t fix it.
-      Hustle doesn’t scale. Systems do.
-    </p>
-  </section>
-
-  <!-- SYSTEM -->
-  <section class="section fade">
-    <h2>The Qubix System</h2>
-
-    <div class="grid">
-      <div class="card">Content → attracts attention</div>
-      <div class="card">Systems → capture & convert</div>
-      <div class="card">AI → multiplies execution</div>
-    </div>
-  </section>
-
-  <!-- PRODUCT -->
-  <section class="section fade">
-    <h2>AI Leverage — $29</h2>
-    <p>
-      The exact system to go from $0 → $5k/month using structured AI workflows.
-    </p>
-
-    <div class="buttons">
-      <div class="btn btn-primary">Get Access</div>
-    </div>
-  </section>
-
-  <!-- FREE -->
-  <section class="section fade">
-    <h2>Start Free. Prove It Works.</h2>
-    <p>
-      Get the AI Starter System and generate your first results before spending anything.
-    </p>
-
-    <div class="buttons">
-      <div class="btn btn-primary">Download Free Kit</div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="section cta fade">
-    <h2>Chaos doesn’t scale.</h2>
-    <p>Systems do.</p>
-
-    <button>Build Your System Now</button>
-  </section>
-
+</style></head><body><div class="cursor" id="cursor"></div><!-- NAV --><div class="nav">
+  <h3>Qubix</h3>
+  <button>Get Started</button>
+</div><div class="container"><!-- HERO --><section class="section hero fade">
+<h1>
+Posting daily without a system
+<span class="highlight">is financial suicide.</span>
+</h1><p>
+Turn attention into predictable $0 → $5k/month using AI-powered systems.
+</p><div class="buttons">
+<div class="btn primary">Get Free System</div>
+<div class="btn secondary">View Product</div>
 </div>
-
-<script>
-// Scroll animation
-const faders = document.querySelectorAll('.fade');
-
-const appearOptions = {
-  threshold: 0.2
-};
-
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('visible');
-    observer.unobserve(entry.target);
-  });
-}, appearOptions);
-
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
+</section><!-- PROBLEM --><section class="section fade">
+<h2>You don’t have an audience problem.</h2>
+<p>
+You have a system problem. Hustle doesn’t scale. Every post without a funnel is wasted effort.
+</p>
+</section><!-- SYSTEM --><section class="section fade">
+<h2>The Qubix System</h2><div class="grid grid-3">
+<div class="card">Attract attention with content</div>
+<div class="card">Convert using structured funnels</div>
+<div class="card">Scale with AI automation</div>
+</div>
+</section><!-- FEATURES --><section class="section fade">
+<h2>What You Get</h2><div class="grid grid-3">
+<div class="card">Step-by-step monetization systems</div>
+<div class="card">AI prompts & workflows</div>
+<div class="card">Content → income frameworks</div>
+<div class="card">Automation systems</div>
+<div class="card">Audience conversion loops</div>
+<div class="card">Scaling blueprint to $5k/month</div>
+</div>
+</section><!-- PRICING --><section class="section fade">
+<h2>Simple Pricing</h2><div class="pricing"><div class="price-card">
+<h3>Starter System</h3>
+<div class="price">Free</div>
+<ul>
+<li>AI starter workflows</li>
+<li>Content framework</li>
+<li>Mini funnel system</li>
+</ul>
+<div class="buttons">
+<div class="btn primary">Download</div>
+</div>
+</div><div class="price-card">
+<h3>AI Leverage</h3>
+<div class="price">$29</div>
+<ul>
+<li>Full monetization system</li>
+<li>AI automation workflows</li>
+<li>$0 → $5k roadmap</li>
+<li>Scaling frameworks</li>
+</ul>
+<div class="buttons">
+<div class="btn primary">Get Access</div>
+</div>
+</div></div>
+</section><!-- CTA --><section class="section cta fade">
+<h2>Chaos doesn’t scale.</h2>
+<p>Systems do.</p>
+<button>Build Your System</button>
+</section></div><script>
+// Cursor glow
+const cursor = document.getElementById("cursor");
+document.addEventListener("mousemove", e => {
+  cursor.style.top = e.clientY + "px";
+  cursor.style.left = e.clientX + "px";
 });
-</script>
 
-</body>
+// Scroll animation
+const elements = document.querySelectorAll(".fade");
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:0.15});
+
+elements.forEach(el => observer.observe(el));
+</script></body>
 </html>
