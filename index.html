@@ -1,431 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qubix | Premium AI Leverage</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Qubix — AI Monetization Systems</title>
 
-    <style>
-        /* =========================================
-           GLOBAL VARIABLES & TOKENS
-           ========================================= */
-        :root {
-            --bg-base: #030305;
-            --bg-glass: rgba(255, 255, 255, 0.02);
-            --bg-glass-hover: rgba(255, 255, 255, 0.04);
-            
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --border-glow: rgba(124, 58, 237, 0.3);
-            
-            --c-purple: #7C3AED;
-            --c-indigo: #4F46E5;
-            --c-blue: #2563EB;
-            --c-sky: #0EA5E9;
-            
-            --text-main: #FFFFFF;
-            --text-muted: rgba(255, 255, 255, 0.65);
-            
-            --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        /* =========================================
-           RESET & BASE
-           ========================================= */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        html {
-            scroll-behavior: smooth;
-            background-color: var(--bg-base);
-        }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-main);
-            background-color: var(--bg-base);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            line-height: 1.6;
-        }
+body {
+  background: #0a0a0a;
+  color: white;
+  overflow-x: hidden;
+}
 
-        /* =========================================
-           PREMIUM BACKGROUND EFFECTS
-           ========================================= */
-        /* Vignette */
-        body::after {
-            content: '';
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle at center, transparent 40%, #030305 100%);
-            pointer-events: none; z-index: 998;
-        }
+/* Gradient glow background */
+.bg-glow {
+  position: fixed;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.25), transparent 60%);
+  filter: blur(120px);
+  top: -200px;
+  left: -200px;
+  z-index: -1;
+}
 
-        /* Expensive Noise Texture */
-        .noise {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none; z-index: 999; opacity: 0.04;
-            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
 
-        /* Animated Ambient Light Orbs */
-        .ambient-light {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.4;
-            pointer-events: none;
-            z-index: 0;
-            animation: floatOrb 20s ease-in-out infinite alternate;
-        }
-        .orb-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: var(--c-purple); animation-delay: 0s; }
-        .orb-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: var(--c-indigo); animation-delay: -5s; }
-        .orb-3 { top: 40%; left: 60%; width: 40vw; height: 40vw; background: var(--c-sky); opacity: 0.2; animation-delay: -10s; }
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-        @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(5%, 10%) scale(1.1); }
-            100% { transform: translate(-5%, -5%) scale(0.9); }
-        }
+.hero h1 {
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 1.1;
+  font-weight: 700;
+}
 
-        /* =========================================
-           UTILITIES
-           ========================================= */
-        .container {
-            max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10;
-        }
-        
-        .glass-panel {
-            background: var(--bg-glass);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
+.highlight {
+  color: #3b82f6;
+}
 
-        .text-gradient {
-            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+.hero p {
+  margin-top: 20px;
+  color: #aaa;
+  max-width: 600px;
+  font-size: 18px;
+}
 
-        .text-gradient-accent {
-            background: linear-gradient(to right, var(--c-sky), var(--c-purple), var(--c-indigo));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: shine 4s linear infinite;
-        }
+/* Buttons */
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
 
-        @keyframes shine { to { background-position: 200% center; } }
+.btn {
+  padding: 14px 26px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-        .italic-serif {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 400;
-        }
+.btn-primary {
+  background: white;
+  color: black;
+}
 
-        /* =========================================
-           TYPOGRAPHY & HEADINGS
-           ========================================= */
-        h1, h2, h3 { line-height: 1.1; letter-spacing: -0.04em; }
-        
-        .hero-title {
-            font-size: clamp(3.5rem, 8vw, 6rem);
-            font-weight: 700;
-            margin-bottom: 24px;
-        }
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
 
-        .section-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 16px;
-        }
+.btn-secondary {
+  border: 1px solid #333;
+}
 
-        .subtitle {
-            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 48px auto;
-            text-align: center;
-            font-weight: 400;
-        }
+.btn-secondary:hover {
+  background: #111;
+}
 
-        /* =========================================
-           NAVIGATION
-           ========================================= */
-        nav {
-            position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-            padding: 24px 0; transition: var(--transition-smooth);
-        }
-        nav.scrolled {
-            background: rgba(3, 3, 5, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-glass);
-            padding: 16px 0;
-        }
-        .nav-inner {
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .logo {
-            font-weight: 800; font-size: 1.5rem; letter-spacing: -0.05em;
-            display: flex; align-items: center; gap: 8px; text-decoration: none; color: #fff;
-        }
-        .logo-dot { width: 8px; height: 8px; background: var(--c-purple); border-radius: 50%; box-shadow: 0 0 10px var(--c-purple); }
-        .nav-links { display: flex; gap: 32px; align-items: center; }
-        .nav-links a {
-            color: var(--text-muted); text-decoration: none; font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-        .nav-links a:hover { color: #fff; }
-        
-        .social-icons { display: flex; gap: 16px; }
-        .social-icons a {
-            color: var(--text-muted); transition: var(--transition-smooth);
-            display: flex; align-items: center; justify-content: center;
-            width: 36px; height: 36px; border-radius: 50%; background: var(--bg-glass);
-            border: 1px solid var(--border-glass);
-        }
-        .social-icons a:hover { color: #fff; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+/* Section */
+.section {
+  padding: 120px 0;
+}
 
-        /* =========================================
-           BUTTONS & CTAs
-           ========================================= */
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-            padding: 16px 32px; border-radius: 100px; font-weight: 600; font-size: 1rem;
-            text-decoration: none; transition: var(--transition-bounce);
-            position: relative; overflow: hidden; cursor: pointer; border: none;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--c-indigo), var(--c-purple));
-            color: #fff;
-            box-shadow: 0 0 0 1px rgba(255,255,255,0.1) inset, 0 10px 24px -10px var(--c-purple);
-        }
-        .btn-primary::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 0 0 1px rgba(255,255,255,0.2) inset, 0 20px 40px -10px var(--c-purple);
-        }
-        .btn-primary:hover::before { left: 100%; }
+/* Glass cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
 
-        .btn-secondary {
-            background: var(--bg-glass); color: #fff;
-            border: 1px solid var(--border-glass);
-            backdrop-filter: blur(10px);
-        }
-        .btn-secondary:hover {
-            background: var(--bg-glass-hover);
-            border-color: rgba(255,255,255,0.2);
-        }
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  padding: 30px;
+  border-radius: 16px;
+  transition: 0.3s;
+}
 
-        /* =========================================
-           HERO SECTION
-           ========================================= */
-        .hero {
-            min-height: 100vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding-top: 100px; position: relative;
-        }
-        
-        .badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 6px 16px; border-radius: 100px;
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            font-size: 0.85rem; font-weight: 500; color: #a78bfa;
-            margin-bottom: 32px;
-        }
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(59,130,246,0.5);
+}
 
-        .cta-group {
-            display: flex; gap: 16px; justify-content: center; align-items: center; margin-top: 40px;
-        }
+/* Headings */
+h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
 
-        /* Hero Social Proof */
-        .hero-proof {
-            display: flex; align-items: center; gap: 16px;
-            margin-top: 60px; padding: 12px 24px; border-radius: 100px;
-            background: var(--bg-glass); border: 1px solid var(--border-glass);
-        }
-        .avatars { display: flex; }
-        .avatar {
-            width: 40px; height: 40px; border-radius: 50%;
-            border: 2px solid var(--bg-base); margin-left: -12px;
-            object-fit: cover;
-        }
-        .avatar:first-child { margin-left: 0; }
-        .proof-text { text-align: left; font-size: 0.9rem; color: var(--text-muted); }
-        .stars { color: #F59E0B; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 2px; }
+p {
+  line-height: 1.6;
+}
 
-        /* Floating Parallax Elements */
-        .floating-ui {
-            position: absolute; pointer-events: none; z-index: -1;
-            opacity: 0.6; filter: blur(1px);
-        }
-        .ui-1 { top: 20%; left: 10%; width: 200px; height: 120px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent); border: 1px solid rgba(255,255,255,0.05); }
-        .ui-2 { bottom: 20%; right: 10%; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, rgba(124, 58, 237, 0.1), transparent); border: 1px solid rgba(124, 58, 237, 0.2); }
+/* CTA */
+.cta {
+  text-align: center;
+}
 
-        /* =========================================
-           FEATURES SECTION
-           ========================================= */
-        .features { padding: 120px 0; }
-        .bento-grid {
-            display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
-            margin-top: 60px;
-        }
-        .feature-card {
-            padding: 40px; display: flex; flex-direction: column; justify-content: space-between;
-        }
-        /* Moving ray effect on border hover */
-        .feature-card::before {
-            content: ""; position: absolute; inset: 0; border-radius: inherit;
-            padding: 1px; /* border width */
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor; mask-composite: exclude;
-            opacity: 0; transition: opacity 0.5s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-5px); border-color: rgba(255,255,255,0.15);
-        }
-        .feature-card:hover::before {
-            opacity: 1; animation: sweep 2s linear infinite;
-        }
-        @keyframes sweep {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
-        }
+.cta button {
+  margin-top: 20px;
+  padding: 18px 40px;
+  font-size: 18px;
+  border-radius: 14px;
+  background: #3b82f6;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-        .col-8 { grid-column: span 8; }
-        .col-4 { grid-column: span 4; }
-        
-        .feature-icon {
-            width: 56px; height: 56px; border-radius: 16px; background: rgba(255,255,255,0.05);
-            display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
-            border: 1px solid var(--border-glass); font-size: 1.5rem;
-        }
-        .feature-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 12px; }
-        .feature-desc { color: var(--text-muted); font-size: 0.95rem; }
+.cta button:hover {
+  transform: scale(1.05);
+}
 
-        /* =========================================
-           STATS SECTION
-           ========================================= */
-        .stats { padding: 80px 0; border-top: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass); background: rgba(0,0,0,0.2); }
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; }
-        .stat-number { font-size: 4rem; font-family: 'Playfair Display', serif; font-weight: 600; margin-bottom: 8px; color: var(--text-main); }
-        .stat-label { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
+/* Fade animation */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
 
-        /* =========================================
-           PRICING SECTION
-           ========================================= */
-        .pricing { padding: 120px 0; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 900px; margin: 0 auto; }
-        .price-card { padding: 48px; text-align: left; }
-        .price-card.premium {
-            background: linear-gradient(180deg, rgba(124, 58, 237, 0.05) 0%, transparent 100%);
-            border-color: rgba(124, 58, 237, 0.3);
-            box-shadow: 0 20px 80px -20px rgba(124, 58, 237, 0.15);
-        }
-        .price-header { margin-bottom: 32px; }
-        .price-name { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
-        .price-amt { font-size: 3rem; font-weight: 700; margin-bottom: 8px; }
-        .price-amt span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
-        .feature-list { list-style: none; margin-bottom: 40px; }
-        .feature-list li { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem; }
-        .check { color: var(--c-sky); }
-
-        /* =========================================
-           FOOTER
-           ========================================= */
-        footer { padding: 60px 0; border-top: 1px solid var(--border-glass); text-align: center; color: var(--text-muted); }
-
-        /* =========================================
-           ANIMATION SYSTEM (SCROLL REVEAL)
-           ========================================= */
-        .reveal {
-            opacity: 0; transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero-title { font-size: 3.5rem; }
-            .col-8, .col-4 { grid-column: span 12; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
-            .pricing-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-title { font-size: 2.8rem; }
-            .cta-group { flex-direction: column; width: 100%; }
-            .btn { width: 100%; }
-            .stats-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
+
 <body>
 
-    <div class="noise"></div>
+<div class="bg-glow"></div>
 
-    <div class="ambient-light orb-1"></div>
-    <div class="ambient-light orb-2"></div>
-    <div class="ambient-light orb-3"></div>
+<div class="container">
 
-    <nav id="navbar">
-        <div class="container nav-inner">
-            <a href="#" class="logo"><div class="logo-dot"></div> Qubix</a>
-            <div class="nav-links">
-                <a href="#features">Architecture</a>
-                <a href="#stats">Performance</a>
-                <a href="#pricing">Pricing</a>
-            </div>
-            <div class="social-icons">
-                <a href="https://x.com/s4lma9" target="_blank" rel="noopener noreferrer">
-                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.005 4.15H5.059z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/qubix.gg?igsh=MWJscGFneGNlZ2xqcw==" target="_blank" rel="noopener noreferrer">
-                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                </a>
-            </div>
-        </div>
-    </nav>
+  <!-- HERO -->
+  <section class="hero fade">
+    <h1>
+      Posting daily without a system
+      <span class="highlight">is financial suicide.</span>
+    </h1>
 
-    <header class="hero">
-        <div class="floating-ui ui-1"></div>
-        <div class="floating-ui ui-2"></div>
+    <p>
+      Qubix helps micro-creators under 100k followers turn attention into
+      predictable $0 → $5k/month income using structured AI systems.
+    </p>
 
-        <div class="container reveal">
-            <div class="badge">✦ NEW ARCHITECTURE</div>
-            <h1 class="hero-title text-gradient">
-                Unshackle your <br>
-                <span class="italic-serif text-gradient-accent">creator engine.</span>
-            </h1>
-            <p class="subtitle delay-1">
-                Qubix is the high-status operating system designed to replace manual grind with AI-driven leverage. Build a teamless revenue engine.
-            </p>
-            <div class="cta-group delay-2">
-                <a href="https://whop.com/qubix/ai-leverage/" target="_blank" class="btn btn-primary magnetic">Deploy Qubix OS</a>
-                <a href="https://whop.com/qubix/ai-ignition/" target="_blank" class="btn btn-secondary magnetic">Get Free Starter Kit</a>
-            </div>
+    <div class="buttons">
+      <div class="btn btn-primary">Get Free System</div>
+      <div class="btn btn-secondary">View AI Leverage</div>
+    </div>
+  </section>
 
-            <div class="hero-proof delay-3">
-                <div class="avatars">
-                    <img src="https://i.pravatar.cc/150?img=32" alt="User" class="avatar">
-                    <img src="https://i.pravatar.cc/150?img=47" alt="User" class="avatar">
-                    <img src="https://i.pravatar.cc/150?img=12" alt="User" class="avatar">
-                    <img src="https://i.pravatar.
+  <!-- PROBLEM -->
+  <section class="section fade">
+    <h2>You don’t have an audience problem.</h2>
+    <p>
+      You have a system problem. Posting more won’t fix it. More tools won’t fix it.
+      Hustle doesn’t scale. Systems do.
+    </p>
+  </section>
+
+  <!-- SYSTEM -->
+  <section class="section fade">
+    <h2>The Qubix System</h2>
+
+    <div class="grid">
+      <div class="card">Content → attracts attention</div>
+      <div class="card">Systems → capture & convert</div>
+      <div class="card">AI → multiplies execution</div>
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section class="section fade">
+    <h2>AI Leverage — $29</h2>
+    <p>
+      The exact system to go from $0 → $5k/month using structured AI workflows.
+    </p>
+
+    <div class="buttons">
+      <div class="btn btn-primary">Get Access</div>
+    </div>
+  </section>
+
+  <!-- FREE -->
+  <section class="section fade">
+    <h2>Start Free. Prove It Works.</h2>
+    <p>
+      Get the AI Starter System and generate your first results before spending anything.
+    </p>
+
+    <div class="buttons">
+      <div class="btn btn-primary">Download Free Kit</div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section cta fade">
+    <h2>Chaos doesn’t scale.</h2>
+    <p>Systems do.</p>
+
+    <button>Build Your System Now</button>
+  </section>
+
+</div>
+
+<script>
+// Scroll animation
+const faders = document.querySelectorAll('.fade');
+
+const appearOptions = {
+  threshold: 0.2
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+</script>
+
+</body>
+</html>
