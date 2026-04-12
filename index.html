@@ -1,26 +1,29 @@
 <!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Qubix — AI Monetization Systems</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
+<title>Qubix — AI Monetization System</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
+
 /* =========================
-   BASE
+BASE SYSTEM (CLEAN SAAS GRID)
 ========================= */
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Inter',sans-serif;
+font-family:Inter,sans-serif;
 }
 
 body{
 background:#05040a;
-color:#fff;
+color:white;
 overflow-x:hidden;
+line-height:1.5;
 }
 
 /* =========================
-   BACKGROUND SYSTEM
+BACKGROUND (PREMIUM LIGHT FIELD)
 ========================= */
 
 .bg{
@@ -28,48 +31,82 @@ position:fixed;
 inset:0;
 z-index:-5;
 background:
-radial-gradient(circle at 20% 20%, rgba(139,92,246,0.35), transparent 40%),
-radial-gradient(circle at 70% 30%, rgba(59,130,246,0.25), transparent 45%),
-radial-gradient(circle at 50% 80%, rgba(168,85,247,0.20), transparent 50%);
-filter:blur(60px);
-animation: floatBG 14s ease-in-out infinite alternate;
+radial-gradient(circle at 20% 20%, rgba(139,92,246,.35), transparent 45%),
+radial-gradient(circle at 70% 30%, rgba(59,130,246,.25), transparent 50%),
+radial-gradient(circle at 50% 90%, rgba(168,85,247,.20), transparent 55%);
+filter:blur(70px);
+animation:float 16s ease-in-out infinite alternate;
 }
 
-@keyframes floatBG{
-0%{transform:scale(1);}
-100%{transform:scale(1.08) translateY(20px);}
+@keyframes float{
+0%{transform:scale(1)}
+100%{transform:scale(1.08) translateY(25px)}
 }
 
-/* vignette */
 .vignette{
-position:fixed;
-inset:0;
-background:radial-gradient(circle,transparent 40%, rgba(0,0,0,0.85) 100%);
+position:fixed;inset:0;
+background:radial-gradient(circle,transparent 45%,rgba(0,0,0,.85));
 z-index:-4;
 }
 
-/* noise texture */
 .noise{
-position:fixed;
-inset:0;
+position:fixed;inset:0;
 background-image:url("https://www.transparenttextures.com/patterns/noise.png");
-opacity:0.05;
+opacity:.04;
 z-index:-3;
 }
 
 /* cursor glow */
 .cursor{
 position:fixed;
-width:450px;
-height:450px;
-background:radial-gradient(circle, rgba(139,92,246,0.18), transparent 60%);
+width:420px;height:420px;
+background:radial-gradient(circle,rgba(139,92,246,.18),transparent 60%);
 transform:translate(-50%,-50%);
 pointer-events:none;
 z-index:-1;
 }
 
 /* =========================
-   NAV
+TYPOGRAPHY SYSTEM (SAAS RHYTHM)
+========================= */
+
+h1{
+font-size:clamp(44px,5vw,78px);
+line-height:1.05;
+letter-spacing:-1.2px;
+}
+
+h2{
+font-size:34px;
+margin-bottom:14px;
+}
+
+p{
+color:#a1a1aa;
+max-width:720px;
+line-height:1.65;
+font-size:16px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#8b5cf6,#3b82f6,#a855f7);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* spacing system */
+.section{
+padding:110px 0;
+}
+
+.container{
+max-width:1180px;
+margin:auto;
+padding:60px 26px;
+}
+
+/* =========================
+NAV
 ========================= */
 
 .nav{
@@ -79,105 +116,45 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:14px 40px;
-background:rgba(10,10,20,0.55);
-backdrop-filter:blur(18px);
-border-bottom:1px solid rgba(255,255,255,0.06);
-z-index:20;
-}
-
-.nav h3{
-font-weight:600;
-letter-spacing:0.5px;
-}
-
-.nav a{
-color:#a1a1aa;
-text-decoration:none;
-margin:0 10px;
-font-size:14px;
-transition:0.3s;
-}
-
-.nav a:hover{
-color:white;
+background:rgba(10,10,20,.55);
+backdrop-filter:blur(22px);
+border-bottom:1px solid rgba(255,255,255,.06);
+z-index:10;
 }
 
 /* =========================
-   LAYOUT
+BUTTONS (MAGNETIC PREMIUM)
 ========================= */
-
-.container{
-max-width:1150px;
-margin:auto;
-padding:50px 24px;
-}
-
-.section{
-padding:80px 0;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero h1{
-font-size:clamp(40px,5vw,78px);
-line-height:1.05;
-letter-spacing:-1px;
-}
-
-.gradient-text{
-background:linear-gradient(90deg,#8b5cf6,#3b82f6,#a855f7);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.hero p{
-margin-top:16px;
-color:#a1a1aa;
-max-width:650px;
-font-size:17px;
-}
-
-/* =========================
-   BUTTONS (MAGNETIC FEEL)
-========================= */
-
-.buttons{
-margin-top:24px;
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-}
 
 .btn{
 padding:12px 20px;
 border-radius:14px;
 cursor:pointer;
-transition:0.25s;
+transition:.3s;
+display:inline-block;
+text-decoration:none;
 font-weight:500;
-position:relative;
-overflow:hidden;
 }
 
 .primary{
 background:linear-gradient(135deg,#8b5cf6,#3b82f6);
 color:white;
+box-shadow:0 0 25px rgba(139,92,246,.18);
 }
 
 .secondary{
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,255,0.1);
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.12);
 color:white;
 }
 
 .btn:hover{
 transform:scale(1.05);
-box-shadow:0 0 25px rgba(139,92,246,0.25);
+box-shadow:0 0 35px rgba(139,92,246,.25);
 }
 
 /* =========================
-   GLASS CARDS
+GLASS SYSTEM
 ========================= */
 
 .grid{
@@ -190,224 +167,268 @@ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 }
 
 .card{
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
 padding:24px;
 border-radius:18px;
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,255,0.08);
-backdrop-filter:blur(20px);
-transition:0.4s;
 position:relative;
 overflow:hidden;
+transition:.4s;
 }
+
+.card:hover{
+transform:translateY(-8px) scale(1.02);
+border-color:#8b5cf6;
+}
+
+/* =========================
+FEATURE SPOTLIGHT ANIMATION
+========================= */
 
 .card::before{
 content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(120deg,transparent,rgba(139,92,246,0.12),transparent);
-transform:translateX(-100%);
-transition:0.8s;
+background:linear-gradient(120deg,transparent,rgba(139,92,246,.18),transparent);
+transform:translateX(-120%);
+transition:1s;
 }
 
 .card:hover::before{
-transform:translateX(100%);
-}
-
-.card:hover{
-transform:translateY(-8px) scale(1.02);
-border-color:rgba(139,92,246,0.4);
+transform:translateX(120%);
 }
 
 /* =========================
-   TESTIMONIALS
+TRUST MARQUEE (SMOOTH LOOP)
 ========================= */
 
-.testimonial{
-padding:20px;
-border-radius:16px;
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,255,0.08);
-backdrop-filter:blur(18px);
+.marquee{
+overflow:hidden;
+white-space:nowrap;
+padding:25px 0;
 }
 
-.avatar{
-width:35px;
-height:35px;
-border-radius:50%;
-margin-right:10px;
+.track{
+display:inline-flex;
+gap:70px;
+animation:scroll 18s linear infinite;
+}
+
+@keyframes scroll{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
+}
+
+.company{
+color:#a1a1aa;
+font-size:14px;
+display:flex;
+gap:10px;
+align-items:center;
 }
 
 /* =========================
-   PRICING
+PRICING (PRO / CONS STRUCTURE)
 ========================= */
 
 .pricing{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:22px;
 }
 
 .price-card{
-padding:28px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
 border-radius:20px;
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,255,0.08);
-backdrop-filter:blur(20px);
-transition:0.3s;
+padding:26px;
+transition:.3s;
 }
 
 .price-card:hover{
 transform:translateY(-10px);
 border-color:#8b5cf6;
-box-shadow:0 0 40px rgba(139,92,246,0.15);
+box-shadow:0 0 40px rgba(139,92,246,.15);
 }
 
 .price{
-font-size:38px;
-margin:10px 0;
+font-size:42px;
 background:linear-gradient(90deg,#8b5cf6,#3b82f6);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+margin:10px 0;
+}
+
+.tag{
+font-size:12px;
+color:#a1a1aa;
+margin-bottom:10px;
+}
+
+/* lists */
+ul{
+margin-top:10px;
+padding-left:18px;
+color:#a1a1aa;
+font-size:14px;
+}
+
+.bad{
+color:#f87171;
+}
+.good{
+color:#34d399;
 }
 
 /* =========================
-   STATS
+FAQ
 ========================= */
 
-.stats{
-display:flex;
-gap:40px;
-flex-wrap:wrap;
-margin-top:20px;
+.faq{
+margin-top:14px;
+padding:16px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+border-radius:14px;
+cursor:pointer;
 }
 
-.stat h2{
-font-size:34px;
+.answer{
+display:none;
+margin-top:10px;
+color:#a1a1aa;
 }
 
 /* =========================
-   FADE ANIMATION
+FADE ANIMATION
 ========================= */
 
 .fade{
 opacity:0;
 transform:translateY(40px);
-transition:all 1s cubic-bezier(0.2,0.8,0.2,1);
+transition:1s cubic-bezier(.2,.8,.2,1);
 }
 
 .fade.show{
 opacity:1;
 transform:translateY(0);
 }
+
 </style></head><body><div class="bg"></div>
 <div class="vignette"></div>
 <div class="noise"></div>
 <div class="cursor" id="cursor"></div><!-- NAV --><div class="nav">
-<h3>Qubix</h3>
+<strong>Qubix</strong>
 <div>
 <a href="https://x.com/s4lma9" target="_blank">X</a>
 <a href="https://www.instagram.com/qubix.gg?igsh=MWJscGFneGNlZ2xqcw==" target="_blank">Instagram</a>
 </div>
-</div><div class="container"><!-- HERO --><section class="section hero fade">
+</div><div class="container"><!-- HERO --><section class="section fade">
 <h1>
-Turn attention into <span class="gradient-text">predictable income</span>
+Build <span class="gradient">$5K/month creator systems</span><br/>
+not chaotic content.
 </h1><p>
-Qubix is a system built for micro-creators under 100k followers to escape chaos and build structured AI-powered revenue systems.
-</p><div class="buttons">
-<a class="btn primary" href="https://whop.com/qubix/ai-ignition/" target="_blank">Get Free Starter Kit</a>
+Qubix is a systems-first AI monetization engine built for creators under 100k followers who are tired of posting without predictable income.
+</p><div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+<a class="btn primary" href="https://whop.com/qubix/ai-ignition/" target="_blank">Get Free System</a>
 <a class="btn secondary" href="https://whop.com/qubix/ai-leverage/" target="_blank">Buy AI Leverage</a>
 </div>
-</section><!-- SYSTEM --><section class="section fade">
-<h2>The System</h2>
-<div class="grid grid-3">
-<div class="card">Attract attention with precision content</div>
-<div class="card">Convert attention into structured funnels</div>
-<div class="card">Scale output using AI leverage</div>
+</section><!-- TRUST --><section class="section fade">
+<h2>Trusted across the ecosystem</h2><div class="marquee">
+<div class="track">
+<div class="company">Whop</div>
+<div class="company">Acquisition.com</div>
+<div class="company">Ghostwriter OS</div>
+<div class="company">Monetize.com</div>
+<div class="company">Microsoft</div>
+<div class="company">OpenAI</div>
+<div class="company">Google</div>
+<div class="company">Sephora</div><div class="company">Whop</div>
+<div class="company">Acquisition.com</div>
+<div class="company">Ghostwriter OS</div>
+<div class="company">Monetize.com</div>
+<div class="company">Microsoft</div>
+<div class="company">OpenAI</div>
+<div class="company">Google</div>
+<div class="company">Sephora</div>
+</div>
 </div>
 </section><!-- FEATURES --><section class="section fade">
-<h2>What You Get</h2>
-<div class="grid grid-3">
-<div class="card">AI monetization systems</div>
-<div class="card">Content → income architecture</div>
-<div class="card">Automation workflows</div>
-<div class="card">Creator funnel design</div>
-<div class="card">Scaling blueprint</div>
-<div class="card">$0 → $5k/month system</div>
-</div>
-</section><!-- STATS --><section class="section fade">
-<h2>Trusted by Creators</h2><div class="stats">
-<div class="stat"><h2>300+</h2><p>Creators using Qubix</p></div>
-<div class="stat"><h2>$120k+</h2><p>Generated through systems</p></div>
-<div class="stat"><h2>97%</h2><p>Report clarity increase</p></div>
-</div>
-</section><!-- TESTIMONIALS --><section class="section fade">
-<h2>What Users Say</h2><div class="grid grid-3"><div class="testimonial">
-<div style="display:flex;align-items:center;">
-<img class="avatar" src="https://i.pravatar.cc/100?img=1"/>
-<strong>Alex M.</strong>
-</div>
-<p style="margin-top:10px;color:#a1a1aa;">
-"I went from posting randomly to actually understanding monetization systems."
-</p>
-</div><div class="testimonial">
-<div style="display:flex;align-items:center;">
-<img class="avatar" src="https://i.pravatar.cc/100?img=2"/>
-<strong>Sarah K.</strong>
-</div>
-<p style="margin-top:10px;color:#a1a1aa;">
-"Qubix gave me structure. First time I saw consistent income."
-</p>
-</div><div class="testimonial">
-<div style="display:flex;align-items:center;">
-<img class="avatar" src="https://i.pravatar.cc/100?img=3"/>
-<strong>James R.</strong>
-</div>
-<p style="margin-top:10px;color:#a1a1aa;">
-"This feels like the missing operating system for creators."
-</p>
+<h2>The System</h2><div class="grid grid-3"><div class="card">
+<strong>Content Engine</strong>
+<p>Turns attention into structured demand.</p>
+</div><div class="card">
+<strong>Monetization System</strong>
+<p>Converts audience into predictable revenue.</p>
+</div><div class="card">
+<strong>AI Execution Layer</strong>
+<p>Automates creator workflows at scale.</p>
 </div></div>
+</section><!-- PAIN --><section class="section fade">
+<h2>You are stuck because of this</h2>
+<div class="grid grid-3"><div class="card bad">Posting daily with no revenue system</div>
+<div class="card bad">Jumping between random AI tools</div>
+<div class="card bad">No clear content → income path</div></div>
+</section><!-- SOLUTION --><section class="section fade">
+<h2>Qubix fixes this</h2>
+<div class="grid grid-3"><div class="card good">Structured monetization workflows</div>
+<div class="card good">AI-powered execution systems</div>
+<div class="card good">Predictable $0 → $5k/month path</div></div>
 </section><!-- PRICING --><section class="section fade">
 <h2>Pricing</h2><div class="pricing"><div class="price-card">
 <h3>Starter Kit</h3>
 <div class="price">Free</div>
-<p style="color:#a1a1aa;">Foundation system for clarity</p>
-<div class="buttons">
-<a class="btn secondary" href="https://whop.com/qubix/ai-ignition/" target="_blank">Get Free Kit</a>
-</div>
+<div class="tag">For clarity & foundation</div><ul>
+<li class="good">AI content frameworks</li>
+<li class="good">Starter monetization system</li>
+<li class="bad">No advanced automation</li>
+</ul><a class="btn secondary" href="https://whop.com/qubix/ai-ignition/" target="_blank">Get Free</a>
+
 </div><div class="price-card">
 <h3>AI Leverage</h3>
 <div class="price">$29</div>
-<p style="color:#a1a1aa;">Full monetization system</p>
-<div class="buttons">
-<a class="btn primary" href="https://whop.com/qubix/ai-leverage/" target="_blank">Buy Now</a>
-</div>
-</div></div>
-</section><!-- CTA --><section class="section fade" style="text-align:center;">
-<h2>Chaos doesn’t scale.</h2>
-<p style="color:#a1a1aa;">Systems do.</p><div class="buttons" style="justify-content:center;">
-<a class="btn primary" href="https://whop.com/qubix/ai-leverage/" target="_blank">Build Your System</a>
-</div>
-</section></div><script>
+<div class="tag">Full monetization system</div><ul>
+<li class="good">Complete AI workflows</li>
+<li class="good">Revenue system design</li>
+<li class="good">$0 → $5k roadmap</li>
+<li class="good">Automation prompts</li>
+</ul><a class="btn primary" href="https://whop.com/qubix/ai-leverage/" target="_blank">Buy Now</a>
 
-// Cursor
-const cursor = document.getElementById("cursor");
-document.addEventListener("mousemove", e=>{
-cursor.style.left = e.clientX + "px";
-cursor.style.top = e.clientY + "px";
+</div></div>
+</section><!-- FAQ --><section class="section fade">
+<h2>FAQ</h2><div class="faq">
+Does this work for beginners?
+<div class="answer">Yes. It is built specifically for creators under 100k followers.</div>
+</div><div class="faq">
+Do I need followers?
+<div class="answer">No. The system converts attention, not follower count.</div>
+</div><div class="faq">
+Is this just theory?
+<div class="answer">No. It is a structured execution system designed for real income generation.</div>
+</div></section></div><script>
+
+// cursor
+const cursor=document.getElementById("cursor");
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
 });
 
-// Scroll animation
-const items = document.querySelectorAll(".fade");
+// scroll fade
+const els=document.querySelectorAll(".fade");
+const obs=new IntersectionObserver(e=>{
+e.forEach(i=>{if(i.isIntersecting)i.target.classList.add("show")})
+},{threshold:.15});
+els.forEach(el=>obs.observe(el));
 
-const obs = new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){
-e.target.classList.add("show");
+// FAQ toggle
+document.querySelectorAll(".faq").forEach(f=>{
+f.onclick=()=>{
+let a=f.querySelector(".answer");
+a.style.display=a.style.display==="block"?"none":"block";
 }
 });
-},{threshold:0.12});
-
-items.forEach(i=>obs.observe(i));
 
 </script></body>
    </html>
